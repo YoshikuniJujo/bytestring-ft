@@ -8,11 +8,13 @@ copyright:           "Copyright (c) 2025 Yoshikuni Jujo"
 
 extra-source-files:
 - README.md
+
+extra-doc-files:
 - CHANGELOG.md
 
 # Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
+synopsis:            Byte String implemented on Finger Tree
+category:            Data
 
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
@@ -21,6 +23,8 @@ description:         Please see the README on GitHub at <https://github.com/Yosh
 
 dependencies:
 - base >= 4.7 && < 5
+- mono-traversable >= 1 && < 2
+- bytestring >= 0.12 && < 0.13
 
 ghc-options:
 - -Wall
@@ -35,17 +39,6 @@ ghc-options:
 
 library:
   source-dirs: src
-
-executables:
-  bytestring-ft-exe:
-    main:                Main.hs
-    source-dirs:         app
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - bytestring-ft
 
 tests:
   bytestring-ft-test:

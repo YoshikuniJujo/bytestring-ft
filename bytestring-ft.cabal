@@ -6,7 +6,9 @@ cabal-version: 2.2
 
 name:           bytestring-ft
 version:        0.1.0.0
+synopsis:       Byte String implemented on Finger Tree
 description:    Please see the README on GitHub at <https://github.com/YoshikuniJujo/bytestring-ft#readme>
+category:       Data
 homepage:       https://github.com/YoshikuniJujo/bytestring-ft#readme
 bug-reports:    https://github.com/YoshikuniJujo/bytestring-ft/issues
 author:         Yoshikuni Jujo
@@ -17,6 +19,7 @@ license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
+extra-doc-files:
     CHANGELOG.md
 
 source-repository head
@@ -25,7 +28,11 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Data.ByteString.FingerTree
+      Data.ByteString.FingerTree.Bits
+      Data.ByteString.FingerTree.Char8
+      Data.ByteString.FingerTree.CString
+      Data.ByteString.FingerTree.Internal
   other-modules:
       Paths_bytestring_ft
   autogen-modules:
@@ -35,20 +42,8 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
-  default-language: Haskell2010
-
-executable bytestring-ft-exe
-  main-is: Main.hs
-  other-modules:
-      Paths_bytestring_ft
-  autogen-modules:
-      Paths_bytestring_ft
-  hs-source-dirs:
-      app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
-  build-depends:
-      base >=4.7 && <5
-    , bytestring-ft
+    , bytestring ==0.12.*
+    , mono-traversable ==1.*
   default-language: Haskell2010
 
 test-suite bytestring-ft-test
@@ -63,5 +58,7 @@ test-suite bytestring-ft-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , bytestring ==0.12.*
     , bytestring-ft
+    , mono-traversable ==1.*
   default-language: Haskell2010
